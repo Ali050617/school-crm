@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Maktab CRM - Guruh ma'lumotlari{% endblock %}
+
+{% block content %}
+    <h1>Guruh ma'lumotlari</h1>
+    <div class="group-details">
+        <h2>{{ group.group_name }}</h2>
+        <p>ID: {{ group.id }}</p>
+        <p>Sinf rahbari: {{ group.class_leader }}</p>
+        <p>O'quvchilar soni: {{ group.students.count }}</p>
+        <div class="actions">
+            <a href="{{ group.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
+            <form action="{{ group.get_delete_url }}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Maktab CRM - O'quvchi ma'lumotlari{% endblock %}
+
+{% block content %}
+    <h1>O'quvchi ma'lumotlari</h1>
+    <div class="student-details">
+        <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+        <p>ID: {{ student.id }}</p>
+        <p>Guruh: {{ student.group }}</p>
+        <p>Tug'ilgan sana: {{ student.birth_date }}</p>
+        <p>Telefon raqami: {{ student.phone_number }}</p>
+        <p>Manzil: {{ student.address }}</p>
+        <div class="actions">
+            <a href="{{ student.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
+            <form action="{{ student.get_delete_url }}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
