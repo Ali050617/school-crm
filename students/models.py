@@ -9,7 +9,7 @@ class Student(BaseModel):
     last_name = models.CharField(max_length=100)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='students')
     birth_date = models.DateField()
-    images = models.ImageField(upload_to='images/')
+    images = models.ImageField(upload_to='i mages/')
     phone_number = models.CharField(max_length=13)
     address = models.TextField()
 

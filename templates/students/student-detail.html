@@ -5,12 +5,21 @@
 {% block content %}
     <h1>O'quvchi ma'lumotlari</h1>
     <div class="student-details">
+        {% if student.images %}
+            <div class="student-image" style="text-align: center; margin-bottom: 20px;">
+                <img src="{{ student.images.url }}" alt="Student Image" style="width: 250px; height: 250px;">
+            </div>
+        {% else %}
+            <p>Rasm mavjud emas.</p>
+        {% endif %}
+
         <h2>{{ student.first_name }} {{ student.last_name }}</h2>
         <p>ID: {{ student.id }}</p>
         <p>Guruh: {{ student.group }}</p>
         <p>Tug'ilgan sana: {{ student.birth_date }}</p>
         <p>Telefon raqami: {{ student.phone_number }}</p>
         <p>Manzil: {{ student.address }}</p>
+
         <div class="actions">
             <a href="{{ student.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
             <form action="{{ student.get_delete_url }}" method="POST" style="display:inline;">

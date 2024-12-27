@@ -3,8 +3,8 @@ from .models import Subject
 
 
 def subject_list(request):
-    subject = Subject.objects.all()
-    ctx = {'subject': subject}
+    subjects = Subject.objects.all()
+    ctx = {'subjects': subjects}
     return render(request, 'subjects/subjects-list.html', ctx)
 
 
@@ -33,7 +33,7 @@ def subject_update(request, pk):
             subject.name = name
             subject.save()
             return redirect(subject.get_detail_url())
-    return render(request, 'subjects/subject-add.html')
+    return render(request, 'subjects/subject-detail.html')
 
 
 def subject_delete(request, pk):

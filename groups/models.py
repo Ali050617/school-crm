@@ -9,13 +9,14 @@ class Group(BaseModel):
     group_name = models.CharField(max_length=100)
 
     def get_detail_url(self):
-        return reverse('groups:group_detail', args=[self.pk])
+        return reverse('groups:detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('groups:group_update', args=[self.pk])
+        return reverse('groups:update', args=[self.pk])
 
     def get_delete_url(self):
-        return reverse('groups:group_delete', args=[self.pk])
+        return reverse('groups:delete', args=[self.pk])
 
     def __str__(self):
         return f"{self.class_leader}{self.group_name}"
+

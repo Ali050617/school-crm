@@ -2,9 +2,10 @@
 
 {% block title %}Maktab CRM - Guruh yaratish{% endblock %}
 
+
 {% block content %}
     <h1>Guruh yaratish</h1>
-    <form method="POST" action="{% url 'groups:group_create' %}">
+    <form method="POST" action="{% url 'groups:create' %}">
         {% csrf_token %}
         <div class="form-group">
             <label for="group_name">Guruh nomi:</label>
@@ -15,7 +16,7 @@
             <select id="class_leader" name="class_leader" required>
                 <option value="">Sinf rahbarini tanlang</option>
                 {% for teacher in teachers %}
-                <option value="{{ teacher.id }}">{{ teacher.full_name }}</option>
+                    <option value="{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</option>
                 {% endfor %}
             </select>
         </div>

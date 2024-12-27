@@ -5,7 +5,7 @@
 {% block content %}
 <h1>O'qituvchilar ro'yxati</h1>
 <div class="actions">
-    <a href="{% url 'teachers:teacher_list' %}" class="btn"><i class="fas fa-plus"></i> Yangi o'qituvchi qo'shish</a>
+    <a href="{% url 'teachers:teacher_create' %}" class="btn"><i class="fas fa-plus"></i> Yangi o'qituvchi qo'shish</a>
     <input type="text" id="searchTeacher" placeholder="O'qituvchi qidirish" class="search-input">
 </div>
 <table id="teachersTable">

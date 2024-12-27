@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Student
 from subjects.models import Subject
-
+from teachers.models import Teacher
+from groups.models import Group
 
 
 def home(request):
-    return render(request, 'index.html')
+    ctx = {
+        'students_count': Student.objects.count(),
+        'subjects_count': Subject.objects.count(),
+        'teachers_count': Teacher.objects.count(),
+        'groups_count': Group.objects.count(),
+    }
+    return render(request, 'index.html', ctx)
 
 
 def student_list(request):
@@ -15,16 +22,18 @@ def student_list(request):
 
 
 def student_create(request):
+    groups = Group.objects.all()
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        group = request.POST.get('group')
+        group_id = request.POST.get('group')
         birth_date = request.POST.get('birth_date')
-        images = request.POST.get('images')
+        images = request.FILES.get('images')
         phone_number = request.POST.get('phone_number')
         address = request.POST.get('address')
-        if first_name and last_name and group and birth_date and images and phone_number and address:
-            group = get_object_or_404(Subject, group_name=group)
+
+        if first_name and last_name and group_id and birth_date and images and phone_number and address:
+            group = Group.objects.get(pk=group_id)
             Student.objects.create(
                 first_name=first_name,
                 last_name=last_name,
@@ -35,7 +44,8 @@ def student_create(request):
                 address=address
             )
             return redirect('students:student_list')
-    return render(request, 'students/student-add.html')
+    ctx = {'groups': groups}
+    return render(request, 'students/student-add.html', ctx)
 
 
 def student_update(request, pk):
@@ -58,7 +68,7 @@ def student_update(request, pk):
             student.address = address
             student.save()
             return redirect(student.get_detail_url())
-    ctx = {'students': student}
+    ctx = {'student': student}
     return render(request, 'students/student-add.html', ctx)
 
 
@@ -72,4 +82,3 @@ def student_delete(request, pk):
     student = get_object_or_404(Student, pk=pk)
     student.delete()
     return redirect('students:student_list')
-

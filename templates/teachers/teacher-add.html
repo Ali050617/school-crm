@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Telefon:</label>
-            <input type="tel" id="phone" name="phone_number" placeholder="Telefon raqamingizni kiriting" required>
+            <input type="tel" id="phone" name="phones_number" placeholder="Telefon raqamingizni kiriting" required>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
@@ -36,17 +36,11 @@
         </div>
         <div class="form-group">
             <label for="image">Rasm:</label>
-            <img src="{{ track.image.url }}" alt="{{ teacher.first_name }}" class="current-image" style="width: 350px; height: 200px;">
             <input type="file" id="image" name="images" accept="image/*">
         </div>
         <div class="actions">
-            {% if teacher %}
-                <button type="submit">class="btn"><i class="fas fa-save"></i> Tahrirlash</button>
-                <a href="{{ teacher.get_detail_url }}" class="btn btn-secondary"><i class="fas fa-times"></i>Detailga qaytish</a>
-            {% else %}
-                <button type="submit" class="btn"><i class="fas fa-save"></i> Saqlash</button>
-                <a href="{% url 'teachers:teacher_list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Bekor qilish</a>
-            {% endif %}
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Saqlash</button>
+            <a href="{% url 'teachers:teacher_list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Bekor qilish</a>
         </div>
     </form>
 {% endblock %}
