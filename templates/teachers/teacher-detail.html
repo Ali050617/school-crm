@@ -23,7 +23,7 @@
     <a href="{{ teacher.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
     <form action="{{ teacher.get_delete_url }}" method="POST" style="display:inline;">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</button>
+        <button type="submit" class="btn btn-danger" ><i class="fas fa-trash"></i> O'chirish</button>
     </form>
 </div>
 {% endblock %}

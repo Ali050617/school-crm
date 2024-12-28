@@ -29,6 +29,7 @@
                     <a href="{{ group.get_detail_url }}" class="btn btn-sm"><i class="fas fa-eye"></i> Ko'rish</a>
                     <a href="{{ group.get_update_url }}" class="btn btn-sm"><i class="fas fa-edit"></i> Tahrirlash</a>
                     <form action="{{ group.get_delete_url }}" method="POST" style="display:inline;">
+                        {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> O'chirish</button>
                     </form>
                 </td>

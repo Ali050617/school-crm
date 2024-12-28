@@ -37,16 +37,30 @@ def group_create(request):
 
 def group_update(request, pk):
     group = get_object_or_404(Group, pk=pk)
+    teachers = Teacher.objects.all()
+    error_message = None
+
     if request.method == 'POST':
-        class_leader = request.POST.get('class_leader')
+        class_leader_id = request.POST.get('class_leader')
         group_name = request.POST.get('group_name')
-        if class_leader and group_name:
-            group.class_leader = class_leader
-            group.group_name = group_name
-            group.save()
-            return redirect(group.get_detail_url())
-    ctx = {'group': group}
-    return render(request, 'groups/group-detail.html',ctx)
+
+        if class_leader_id and group_name:
+            try:
+                class_leader = Teacher.objects.get(pk=class_leader_id)
+                group.class_leader = class_leader
+                group.group_name = group_name
+                group.save()
+                return redirect(group.get_detail_url())
+            except Teacher.DoesNotExist:
+                error_message = "The selected teacher does not exist."
+
+    ctx = {
+        'group': group,
+        'teachers': teachers,
+        'error_message': error_message,
+    }
+    return render(request, 'groups/group-add.html', ctx)
+
 
 
 def group_detail(request, pk):

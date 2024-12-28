@@ -33,10 +33,11 @@ def subject_update(request, pk):
             subject.name = name
             subject.save()
             return redirect(subject.get_detail_url())
-    return render(request, 'subjects/subject-detail.html')
+    return render(request, 'subjects/subject-add.html')
 
 
 def subject_delete(request, pk):
     subject = get_object_or_404(Subject, pk=pk)
+    print(100)
     subject.delete()
     return redirect('subjects:subject_list')

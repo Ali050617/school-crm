@@ -14,13 +14,13 @@ class Teacher(BaseModel):
     images = models.ImageField(upload_to='photos/', blank=True, null=True)
 
     def get_detail_url(self):
-        return reverse('teachers:teacher_detail', args=[self.pk])
+        return reverse('teachers:detail', args=[self.pk])
 
     def get_update_url(self):
-        return reverse('teachers:teacher_update', args=[self.pk])
+        return reverse('teachers:update', args=[self.pk])
 
     def get_delete_url(self):
-        return reverse('teachers:teacher_delete', args=[self.pk])
+        return reverse('teachers:delete', args=[self.pk])
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

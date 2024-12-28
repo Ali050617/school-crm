@@ -8,7 +8,7 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="subjectName">Fan nomi:</label>
-            <input type="text" id="subjectName" name="name" placeholder="Fan nomini kiriting" required>
+            <input type="text" id="subjectName" name="name" value="{{ subject.name }}"  placeholder="Fan nomini kiriting" required>
         </div>
 <!--        <div class="form-group">-->
 <!--            <label for="teachers">O'qituvchilar:</label>-->

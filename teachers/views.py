@@ -69,7 +69,7 @@ def teacher_update(request, pk):
             teacher.save()
             return redirect(teacher.get_detail_url())
     ctx = {'teacher': teacher}
-    return render(request, 'teachers/teacher-detail.html', ctx)
+    return render(request, 'teachers/teacher-add.html', ctx)
 
 
 def teacher_delete(request, pk):
