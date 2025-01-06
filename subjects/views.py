@@ -38,6 +38,5 @@ def subject_update(request, pk):
 
 def subject_delete(request, pk):
     subject = get_object_or_404(Subject, pk=pk)
-    print(100)
     subject.delete()
     return redirect('subjects:subject_list')

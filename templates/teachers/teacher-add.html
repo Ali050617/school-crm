@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Yangi O'qituvchi yaratish</h1>
-    <form id="createTeacherForm" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <label for="first_name">Ism:</label>

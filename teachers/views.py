@@ -16,10 +16,11 @@ def teacher_create(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         subject_id = request.POST.get('subject')
-        phone_number = request.POST.get('phones_number')
+        phone_number = request.POST.get('phone_number')
         email = request.POST.get('email')
         work_experience = request.POST.get('work_experience')
         images = request.FILES.get('images')
+        print(first_name, last_name, subject_id, phone_number, email, work_experience, images)
         if (first_name and last_name
                 and subject_id and phone_number
                 and email and

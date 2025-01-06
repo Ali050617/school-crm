@@ -35,6 +35,7 @@ def group_create(request):
     }
     return render(request, 'groups/group-add.html', ctx)
 
+
 def group_update(request, pk):
     group = get_object_or_404(Group, pk=pk)
     teachers = Teacher.objects.all()
@@ -60,7 +61,6 @@ def group_update(request, pk):
         'error_message': error_message,
     }
     return render(request, 'groups/group-add.html', ctx)
-
 
 
 def group_detail(request, pk):
