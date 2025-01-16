@@ -18,5 +18,5 @@ class Group(BaseModel):
         return reverse('groups:delete', args=[self.pk])
 
     def __str__(self):
-        return f"{self.class_leader}{self.group_name}"
+        return self.group_name
 
