@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'students',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,6 +51,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "My School Admin",
+    "site_header": "My School",
+    "site_brand": "My School Admin",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+}
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -125,3 +135,11 @@ MEDIA_ROOT = 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'muhammadalikadyrov06@gmail.com'
+EMAIL_HOST_PASSWORD = 'bwiazvwxgznapgwv'
